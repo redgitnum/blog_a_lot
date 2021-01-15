@@ -1,11 +1,11 @@
 1. Website Skeleton
-    - Home page with latest posts
-    - Center Header with home / categories (will expand downward)/ about? 
-    - Right header with login / register / dashboard 'as username?'(if logged)/ logout (if logged) / add post? (if logged)
-    - below header sorting by latest / most votes ? / most views ?
+    DONE - Home page with latest posts
+    DONE- Center Header with home / categories (will expand downward)/ about? 
+    DONE- Right header with login / register / dashboard 'as username?'(if logged)/ logout (if logged) / add post? (if logged)
+    DONE - below header sorting by latest / most votes ? / most views ?
     - top left searchbar ? {by post_title}
-    - categories drop down (div expand to see categories/tags) and filter view by them
-    - footer with sitemap
+    ???- categories drop down (div expand to see categories/tags) and filter view by them
+    DONE- footer with sitemap
         * Blog 
             +Home
             +categories
@@ -16,7 +16,7 @@
             +Dashboard(if logged)
         * Github link
         * Portfolio link
-    - single post Skeleton (max 5 posts per page?)
+    DONE- single post Skeleton (max 5 posts per page?)
         *post votes/likes count on left of title
         *post title - by {Author} posted on {datestamp}
             + in {category/categories}
