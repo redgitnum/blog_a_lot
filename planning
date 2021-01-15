@@ -1,0 +1,76 @@
+1. Website Skeleton
+    - Home page with latest posts
+    - Center Header with home / categories (will expand downward)/ about? 
+    - Right header with login / register / dashboard 'as username?'(if logged)/ logout (if logged) / add post? (if logged)
+    - below header sorting by latest / most votes ? / most views ?
+    - top left searchbar ? {by post_title}
+    - categories drop down (div expand to see categories/tags) and filter view by them
+    - footer with sitemap
+        * Blog 
+            +Home
+            +categories
+            +about
+        * Account
+            +register
+            +login
+            +Dashboard(if logged)
+        * Github link
+        * Portfolio link
+    - single post Skeleton (max 5 posts per page?)
+        *post votes/likes count on left of title
+        *post title - by {Author} posted on {datestamp}
+            + in {category/categories}
+        *post content (max height?)
+        *comments count at the bottom - with link to see whole post
+    - about page content
+        *what the page does
+        *how to use it
+        *what you can do when registered
+        *have fun
+    -dashboard link as {username} {if logged}
+    -login page {if guest}
+    -register page {if guest}
+    -logout button {if logged}
+    -dashboard Skeleton
+        *main page
+            {username}
+            {number of posts}   
+            {number of votes/likes} {number of posts you liked/voted}
+            {number of comments}  {number of your comments}
+        *navigation/header
+            +posts
+            +comments
+            +likes/votes
+            +add post
+        * each post/comment to have edit/delete button
+        *add/edit post form Skeleton {need post_id when edit}
+            +title
+            +categories
+            +post body
+        *edit/delete comments
+            +comment_id needed
+            +comment body
+        *delete post {post_id}
+            +confirmation required
+            +delete all comments in that post {cascade delete}
+        *delete your Account
+            +confirmation required
+            +delete all data from db {userdata, posts, comments, likes/votes}
+    -post page Skeleton
+        *post title - by {Author} posted on {datestamp}
+            + in {category/categories <- links to categories}
+        *post content (max height?)
+        *comments count at the bottom
+        *comment form below {comment body only} {if logged?}
+        *all comments below form {by latest}
+            +{comment author} commented on {timestamp}
+            +comment body
+        *sidebar with author information {always visible autoscroll}
+            +{author name}
+            +{total posts}
+            +{this post likes?}
+            +{this post comment count}
+    -{author name} is link to authors user page
+        *list of all posts by that user {view the same as home page or filered/searched results}
+
+    
