@@ -72,5 +72,3 @@
             +{this post comment count}
     -{author name} is link to authors user page
         *list of all posts by that user {view the same as home page or filered/searched results}
-
-    
