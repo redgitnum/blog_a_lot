@@ -27,10 +27,10 @@
         *how to use it
         *what you can do when registered
         *have fun
-    -dashboard link as {username} {if logged}
-    -login page {if guest}
-    -register page {if guest}
-    -logout button {if logged}
+    DONE -dashboard link as {username} {if logged}
+    DONE -login page {if guest}
+    DONE -register page {if guest}
+    DONE -logout button {if logged}
     -dashboard Skeleton
         *main page
             {username}
