@@ -62,11 +62,16 @@
                     <a href="{{ route('home') }}">Home</a>
                 </li>
                 <li class="px-6 text-xl underline border-r-2 border-gray-300">
-                    <a href="">Categories</a>
+                    <a href="{{ route('categories') }}">Categories</a>
                 </li>
-                <li class="px-6 text-xl underline">
-                    <a href="">About</a>
+                <li class="px-6 text-xl underline @auth border-r-2 border-gray-300 @endauth">
+                    <a href="{{ route('about') }}">About</a>
                 </li>
+                @auth                   
+                <li class="px-6 text-xl underline text-green-600">
+                    <a href="{{ route('posts.create') }}">Create Post</a>
+                </li> 
+                @endauth
             </ul>
         </nav>
     </header>

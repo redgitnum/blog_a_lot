@@ -22,7 +22,7 @@
             + in {category/categories}
         *post content (max height?)
         *comments count at the bottom - with link to see whole post
-    - about page content
+    DONE about page content
         *what the page does
         *how to use it
         *what you can do when registered
@@ -41,7 +41,7 @@
             +posts
             +comments
             +likes/votes
-            +add post
+    DONE    +add post
         * each post/comment to have edit/delete button
         *add/edit post form Skeleton {need post_id when edit}
             +title
