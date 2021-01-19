@@ -14,4 +14,13 @@ class PostsController extends Controller
             'posts' => $posts
         ]);
     }
+
+    public function category($category)
+    {
+        $posts = Post::latest()->with('user', 'comments')->where('categories', 'LIKE', '%'.$category.'%')->paginate(10);
+        return view('home', [
+            'posts' => $posts,
+            'category' => $category
+        ]);
+    }
 }

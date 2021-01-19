@@ -42,7 +42,7 @@
             +comments
             +likes/votes
     DONE    +add post
-        * each post/comment to have edit/delete button
+        *each post/comment to have edit/delete button
         *add/edit post form Skeleton {need post_id when edit}
             +title
             +categories

@@ -10,7 +10,11 @@ module.exports = {
     extend: {},
   },
   variants: {
-    extend: {},
+    extend: {
+      backgroundColor: ['checked', 'active'],
+      borderColor: ['checked'],
+      opacity: ['disabled'],
+    }
   },
   plugins: [],
 }

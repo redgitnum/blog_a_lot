@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PostsController::class, 'index'])->name('home');
+Route::get('/category/{category}', [PostsController::class, 'category'])->name('home.category');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
