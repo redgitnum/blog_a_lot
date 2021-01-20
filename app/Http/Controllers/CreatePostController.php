@@ -24,19 +24,31 @@ class CreatePostController extends Controller
     public function create(Request $request, Auth $auth)
     {
         
-
         $this->validate($request, [
             'title' => 'required|max:255',
             'categories' => 'required|array|min:1|max:5',
             'body' => 'required'
         ]);
         try{
-            Post::create([
+            $post = new Post([
                 'title' => $request->title,
                 'user_id' => $auth::id(),
-                'categories' => $request->categories,
                 'body' => $request->body,
-                ]);
+            ]);
+            $cats = [];
+            foreach ($request->categories as $cat) {
+                $cats[] = Category::select('id')->where('name', $cat)->value('id');
+            }
+            $post->save();
+            $post->categories()->attach($cats);
+
+            
+            // Post::create([
+            //     'title' => $request->title,
+            //     'user_id' => $auth::id(),
+            //     'categories' => $request->categories,
+            //     'body' => $request->body,
+            //     ]);
         } catch(QueryException $exception){
             return back()->with('status', $exception->getMessage());
         }

@@ -13,6 +13,6 @@ class Category extends Model
 
     public function posts()
     {
-        return Post::where('categories', 'LIKE', '%'.$this->name.'%')->count();
+        return $this->belongsToMany(Post::class)->withTimestamps();
     }
 }

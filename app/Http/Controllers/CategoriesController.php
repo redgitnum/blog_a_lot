@@ -9,7 +9,7 @@ class CategoriesController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::withCount('posts')->get();
         return view('categories', [
             'categories' => $categories
         ]);

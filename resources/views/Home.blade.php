@@ -20,7 +20,7 @@
                 <x-post :post="$post"/>
                 <div class="border-t px-6 py-4 flex justify-between items-center mb-4 bg-white shadow rounded-md rounded-t-none border-gray-200">
                     <div class="text-gray-500 font-mono">
-                        {{ $post->comments->count() }} Comments 
+                        {{ $post->comments_count }} Comments 
                     </div>
                     <div class="text-sm uppercase font-mono text-gray-600 ">
                         continue reading>>
