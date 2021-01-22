@@ -18,7 +18,9 @@ class CreatePostController extends Controller
 
     public function index()
     {
-        return view('CreatePost');
+        return view('createpost', [
+            'categories' => Category::get()
+        ]);
     }
 
     public function create(Request $request, Auth $auth)
@@ -42,13 +44,7 @@ class CreatePostController extends Controller
             $post->save();
             $post->categories()->attach($cats);
 
-            
-            // Post::create([
-            //     'title' => $request->title,
-            //     'user_id' => $auth::id(),
-            //     'categories' => $request->categories,
-            //     'body' => $request->body,
-            //     ]);
+
         } catch(QueryException $exception){
             return back()->with('status', $exception->getMessage());
         }

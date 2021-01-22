@@ -18,14 +18,14 @@
         <div class="w-11/12 sm:w-10/12 lg:w-8/12 xl:w-7/12 p-3">
             @foreach ($posts as $post)
                 <x-post :post="$post"/>
-                <div class="border-t px-6 py-4 flex justify-between items-center mb-4 bg-white shadow rounded-md rounded-t-none border-gray-200">
+                <a href="{{ route('post', ['id' => $post->id]) }}" class="select-none border-t px-6 py-4 flex justify-between items-center mb-4 bg-white shadow rounded-md rounded-t-none border-gray-200">
                     <div class="text-gray-500 font-mono">
                         {{ $post->comments_count }} Comments 
                     </div>
                     <div class="text-sm uppercase font-mono text-gray-600 ">
                         continue reading>>
                     </div>
-                </div>
+                </a>
             @endforeach
             @if(!$posts->count())
             <div class="w-full bg-white shadow rounded-md rounded-b-none border-gray-400">

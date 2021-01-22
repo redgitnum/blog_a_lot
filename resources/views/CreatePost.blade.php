@@ -1,11 +1,6 @@
 @extends('_layouts.app')
 @section('content')
 
-@php
-use App\models\Category;
-$categories = Category::get();
-@endphp
-
 <script defer>
     let limit = 5;
     window.onload = function() {        

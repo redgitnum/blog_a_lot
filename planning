@@ -1,11 +1,11 @@
 1. Website Skeleton
-    DONE - Home page with latest posts
-    DONE- Center Header with home / categories (will expand downward)/ about? 
-    DONE- Right header with login / register / dashboard 'as username?'(if logged)/ logout (if logged) / add post? (if logged)
-    DONE - below header sorting by latest / most votes ? / most views ?
+    <!-- DONE - Home page with latest posts -->
+    <!-- DONE- Center Header with home / categories (will expand downward)/ about?  -->
+    <!-- DONE- Right header with login / register / dashboard 'as username?'(if logged)/ logout (if logged) / add post? (if logged) -->
+    <!-- DONE - below header sorting by latest / most votes ? / most views ? -->
     - top left searchbar ? {by post_title}
     ???- categories drop down (div expand to see categories/tags) and filter view by them
-    DONE- footer with sitemap
+    <!-- DONE- footer with sitemap
         * Blog 
             +Home
             +categories
@@ -15,22 +15,22 @@
             +login
             +Dashboard(if logged)
         * Github link
-        * Portfolio link
-    DONE- single post Skeleton (max 5 posts per page?)
+        * Portfolio link -->
+    <!-- DONE- single post Skeleton (max 5 posts per page?)
         *post votes/likes count on left of title
         *post title - by {Author} posted on {datestamp}
             + in {category/categories}
         *post content (max height?)
-        *comments count at the bottom - with link to see whole post
-    DONE about page content
+        *comments count at the bottom - with link to see whole post -->
+    <!-- DONE about page content
         *what the page does
         *how to use it
         *what you can do when registered
-        *have fun
-    DONE -dashboard link as {username} {if logged}
-    DONE -login page {if guest}
-    DONE -register page {if guest}
-    DONE -logout button {if logged}
+        *have fun -->
+    <!-- DONE -dashboard link as {username} {if logged} -->
+    <!-- DONE -login page {if guest} -->
+    <!-- DONE -register page {if guest} -->
+    <!-- DONE -logout button {if logged} -->
     -dashboard Skeleton
         *main page
             {username}
@@ -41,7 +41,7 @@
             +posts
             +comments
             +likes/votes
-    DONE    +add post
+    <!-- DONE    +add post -->
         *each post/comment to have edit/delete button
         *add/edit post form Skeleton {need post_id when edit}
             +title
@@ -57,14 +57,14 @@
             +confirmation required
             +delete all data from db {userdata, posts, comments, likes/votes}
     -post page Skeleton
-        *post title - by {Author} posted on {datestamp}
-            + in {category/categories <- links to categories}
-        *post content (max height?)
-        *comments count at the bottom
-        *comment form below {comment body only} {if logged?}
-        *all comments below form {by latest}
+    <!-- DONE *post title - by {Author} posted on {datestamp}
+            + in {category/categories <- links to categories} -->
+    <!-- DONE *post content (max height?) -->
+    <!-- DONE *comments count at the bottom -->
+    <!-- DONE *comment form below {comment body only} {if logged?} -->
+    <!-- DONE *all comments below form {by latest}
             +{comment author} commented on {timestamp}
-            +comment body
+            +comment body -->
         *sidebar with author information {always visible autoscroll}
             +{author name}
             +{total posts}
