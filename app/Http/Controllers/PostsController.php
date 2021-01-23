@@ -43,7 +43,7 @@ class PostsController extends Controller
         }, 'comments.user' => function($q) {
             $q->select('id', 'name');
         }, 'categories', 'user'  => function($q) {
-            $q->select('id', 'name');
+            $q->select('id', 'name')->withCount(['posts', 'comments']);
         }])->first();
         return view('postpage', [
             'post' => $post

@@ -4,7 +4,6 @@
     <!-- DONE- Right header with login / register / dashboard 'as username?'(if logged)/ logout (if logged) / add post? (if logged) -->
     <!-- DONE - below header sorting by latest / most votes ? / most views ? -->
     - top left searchbar ? {by post_title}
-    ???- categories drop down (div expand to see categories/tags) and filter view by them
     <!-- DONE- footer with sitemap
         * Blog 
             +Home
@@ -65,10 +64,10 @@
     <!-- DONE *all comments below form {by latest}
             +{comment author} commented on {timestamp}
             +comment body -->
-        *sidebar with author information {always visible autoscroll}
+        <!-- DONE *sidebar with author information {always visible autoscroll}
             +{author name}
             +{total posts}
             +{this post likes?}
-            +{this post comment count}
+            +{this post comment count} -->
     -{author name} is link to authors user page
         *list of all posts by that user {view the same as home page or filered/searched results}

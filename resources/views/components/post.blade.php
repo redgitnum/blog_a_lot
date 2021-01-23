@@ -6,7 +6,7 @@
             15 votes
         </div>
         <div class="w-full px-2 my-2">
-            <a href="{{ route('post', ['id' => $post->id]) }}" class="text-indigo-900">{{ $post->title }}, by {{ $post->user->name }}</a>
+            <p><a href="{{ route('post', ['id' => $post->id]) }}" class="text-indigo-900">{{ $post->title }}</a>, by <a href="" class="text-green-700">{{ $post->user->name }}</a></p>
             <div class="text-xs"> in
                 @if(is_array($post->categories->pluck(['name'])->toArray()))
                     @foreach ($post->categories->pluck(['name'])->toArray() as $cat)

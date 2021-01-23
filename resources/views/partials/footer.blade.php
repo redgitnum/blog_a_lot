@@ -1,5 +1,5 @@
 <footer>
-    <div class="w-full bg-gray-700 text-gray-200 flex flex-col items-center">
+    <div class="mt-10 w-full bg-gray-700 text-gray-200 flex flex-col items-center">
         <div class="uppercase text-xs px-16 sm:px-10 py-3 w-full sm:w-10/12 lg:w-7/12 bg-gray-700 border-b border-white border-opacity-50">
             Sitemap
         </div>
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex justify-center pt-2 pb-4 border-t border-white border-opacity-30 w-full sm:w-10/12 lg:w-7/12 bg-gray-700">
+        <div class="flex justify-center mt-6 pt-2 pb-6 border-t border-white border-opacity-30 w-full sm:w-10/12 lg:w-7/12 bg-gray-700">
             Copyright &#169; 2021&#160;<a href="http://gbcode.pl" target="_blank" class="font-bold">gbcode</a>. All rights reserved.
         </div>
     </div>
