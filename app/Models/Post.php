@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Vote;
 use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,6 +26,11 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
     }
 
     public function categories()

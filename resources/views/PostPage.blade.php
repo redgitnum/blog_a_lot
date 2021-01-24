@@ -1,6 +1,18 @@
 @extends('_layouts.app')
 @section('content')
 
+<script defer>
+    window.onload = function(){
+        if(sessionStorage.getItem('scrollPos') && (document.referrer == window.location.href)){
+            window.scrollTo(0, sessionStorage.getItem('scrollPos'))
+            sessionStorage.clear()
+        }
+    }
+    window.onscroll = function(){
+        sessionStorage.setItem('scrollPos', window.scrollY);
+    }
+</script>
+
 
 <div class="flex flex-col items-center">
     <div class="w-11/12 sm:w-10/12 lg:w-8/12 xl:w-7/12 mt-4 flex">
@@ -17,7 +29,7 @@
                 <a href="" class="font-bold text-blue-600">{{ $post->user->name }}</a>
                 <p>{{ $post->user->posts_count }} &#10002; posts</p>
                 <p>{{ $post->user->comments_count }} &#9993; comments</p>
-                <p>4581 &#10026; total votes</p>
+                <p>{{ $post->user->votes_count }} &#10026; total votes</p>
             </div>
         </div>
         <div class="w-full border-t border-b px-6 py-4 flex justify-between items-center mt-4 bg-white shadow rounded-md rounded-b-none border-gray-200">

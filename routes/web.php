@@ -27,6 +27,7 @@ Route::get('/category/{category}', [PostsController::class, 'category'])->name('
 
 Route::get('/post/{id}', [PostsController::class, 'post'])->name('post');
 Route::post('/post/{id}', [PostsController::class, 'comment'])->name('post.comment');
+Route::post('/vote/{id}', [PostsController::class, 'vote'])->name('post.vote');
 
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 

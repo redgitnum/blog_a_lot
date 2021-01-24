@@ -1,6 +1,19 @@
 @extends('_layouts.app')
 @section('content')
 
+
+<script defer>
+    window.onload = function(){
+        if(sessionStorage.getItem('scrollPos') && (document.referrer == window.location.href)){
+            window.scrollTo(0, sessionStorage.getItem('scrollPos'))
+            sessionStorage.clear()
+        }
+    }
+    window.onscroll = function(){
+        sessionStorage.setItem('scrollPos', window.scrollY);
+    }
+</script>
+
     <div class="flex flex-col items-center flex-grow">
         <div class="w-11/12 sm:w-10/12 lg:w-8/12 xl:w-7/12 flex p-1 
         font-mono text-gray-600 text-sm mt-3 mb-1">

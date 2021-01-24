@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Comment;
 use App\Models\Category;
+use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Database\QueryException;
 
@@ -12,12 +13,12 @@ class PostsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth'])->only('comment');
+        $this->middleware(['auth'])->only(['comment', 'vote']);
     }
 
     public function index()
     {
-        $posts = Post::latest()->withCount('comments')->with(['user' => function($q) {
+        $posts = Post::latest()->withCount(['comments', 'votes'])->with(['user' => function($q) {
             $q->select('id', 'name');
         }, 'categories'])->paginate(10);
         return view('home', [
@@ -29,7 +30,7 @@ class PostsController extends Controller
     {
         $posts = Post::whereHas('categories', function($query) use ($category) {
             $query->where('name', '=', $category);
-        })->withCount('comments')->with('user', 'categories')->paginate(10);
+        })->withCount(['comments', 'votes'])->with('user', 'categories')->paginate(10);
         return view('home', [
             'posts' => $posts,
             'category' => $category
@@ -38,12 +39,12 @@ class PostsController extends Controller
 
     public function post($id)
     {
-        $post = Post::where('id', $id)->with(['comments' => function($q) {
+        $post = Post::where('id', $id)->withCount('votes')->with(['comments' => function($q) {
             $q->orderBy('created_at', 'desc');
         }, 'comments.user' => function($q) {
             $q->select('id', 'name');
         }, 'categories', 'user'  => function($q) {
-            $q->select('id', 'name')->withCount(['posts', 'comments']);
+            $q->select('id', 'name')->withCount(['posts', 'comments', 'votes']);
         }])->first();
         return view('postpage', [
             'post' => $post
@@ -69,5 +70,26 @@ class PostsController extends Controller
         }
 
         return back();
+    }
+
+    public function vote($id)
+    {
+        $votes = Vote::where([
+            ['user_id', auth()->id()],
+            ['post_id', $id]
+            ]);
+        if($votes->get()->isEmpty())
+            {
+                $vote = new Vote([
+                    'post_id' => $id,
+                    'user_id' => auth()->id()
+                ]);
+                $vote->save();
+            } else {
+                $votes->delete();
+        }
+        
+        // return redirect(url()->previous().'#'.$id);
+        return redirect(url()->previous());
     }
 }

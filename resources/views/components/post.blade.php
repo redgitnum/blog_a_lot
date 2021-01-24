@@ -1,9 +1,15 @@
 @props(['post'])
 
+
 <div class="w-full bg-white shadow rounded-md rounded-b-none border-gray-400">
     <div class="text-lg text-gray-500 flex items-center justify-between">
         <div class="border-r px-2 my-2 text-sm text-center text-gray-600">
-            15 votes
+            <form action="{{ route('post.vote', ['id' => $post->id]) }}" method="POST" id="{{ $post->id }}">
+                @csrf
+                <button type="submit" class="bg-green-200 p-2">
+                    {{ $post->votes_count }} votes
+                </button>
+            </form>
         </div>
         <div class="w-full px-2 my-2">
             <p><a href="{{ route('post', ['id' => $post->id]) }}" class="text-indigo-900">{{ $post->title }}</a>, by <a href="" class="text-green-700">{{ $post->user->name }}</a></p>
