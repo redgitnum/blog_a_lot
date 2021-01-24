@@ -16,25 +16,34 @@ class PostsController extends Controller
         $this->middleware(['auth'])->only(['comment', 'vote']);
     }
 
-    public function index()
+    public function index($sort = null)
     {
-        $posts = Post::latest()->withCount(['comments', 'votes'])->with(['user' => function($q) {
-            $q->select('id', 'name');
-        }, 'categories'])->paginate(10);
-        return view('home', [
-            'posts' => $posts
-        ]);
+        if($sort === null || $sort ==='mostvotes'){
+            $posts = Post::withCount(['comments', 'votes'])->orderBy($sort ? 'votes_count' : 'created_at', 'desc')->with(['user' => function($q) {
+                $q->select('id', 'name');
+            }, 'categories'])->paginate(10);
+            return view('home', [
+                'posts' => $posts,
+                'sort' => $sort               
+                ]);
+        }
+        return redirect(route('home'));
     }
 
-    public function category($category)
+    public function category($category, $sort = null)
     {
-        $posts = Post::whereHas('categories', function($query) use ($category) {
-            $query->where('name', '=', $category);
-        })->withCount(['comments', 'votes'])->with('user', 'categories')->paginate(10);
-        return view('home', [
-            'posts' => $posts,
-            'category' => $category
-        ]);
+        if($sort === null || $sort ==='mostvotes'){
+            $posts = Post::whereHas('categories', function($query) use ($category) {
+                $query->where('name', '=', $category);
+            })->withCount(['comments', 'votes'])->orderBy($sort ? 'votes_count' : 'created_at', 'desc')->with('user', 'categories')->paginate(10);
+            return view('home', [
+                'posts' => $posts,
+                'category' => $category,
+                'sort' => $sort
+            ]);
+        }
+        return redirect(route('home.category', $category));
+
     }
 
     public function post($id)

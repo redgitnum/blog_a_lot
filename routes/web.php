@@ -22,8 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PostsController::class, 'index'])->name('home');
-Route::get('/category/{category}', [PostsController::class, 'category'])->name('home.category');
+
 
 Route::get('/post/{id}', [PostsController::class, 'post'])->name('post');
 Route::post('/post/{id}', [PostsController::class, 'comment'])->name('post.comment');
@@ -47,4 +46,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/posts/create', [CreatePostController::class, 'index'])->name('posts.create');
 Route::post('/posts/create', [CreatePostController::class, 'create']);
 
+Route::get('/{sort?}', [PostsController::class, 'index'])->name('home');
+Route::get('/category/{category}/{sort?}', [PostsController::class, 'category'])->name('home.category');
 
