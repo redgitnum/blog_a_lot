@@ -17,7 +17,7 @@
 <div class="flex flex-col items-center">
     <div class="w-11/12 sm:w-10/12 lg:w-8/12 xl:w-7/12 mt-4 flex">
         <h1 class="text-md text-gray-500 ml-3 px-3">
-            <a href="{{ route('home') }}"> &#8592; back </a>
+            <a href="{{ route('home') }}"> &#8592; home </a>
             / {{ $post->title }}
         </h1>
     </div>
@@ -26,7 +26,7 @@
         <div class="h-full w-full border-t lg-border-none lg:w-2/12 static lg:absolute right-1 xl:right-10">
             <div class="sticky px-6 lg:px-2 top-0 bg-gray-50 p-2 rounded-b lg:rounded shadow">
                 <p class="font-mono uppercase text-sm">About author</p>
-                <a href="" class="font-bold text-blue-600">{{ $post->user->name }}</a>
+                <a href="{{ route('user', ['id'=>$post->user->id]) }}" class="font-bold text-blue-600">{{ $post->user->name }}</a>
                 <p>{{ $post->user->posts_count }} &#10002; posts</p>
                 <p>{{ $post->user->comments_count }} &#9993; comments</p>
                 <p>{{ $post->user->votes_count }} &#10026; total votes</p>
@@ -37,13 +37,18 @@
                 {{ $post->comments->count() ?? 'No' }} {{ Str::plural('Comment', $post->comments->count()) }}
             </div>
         </div>
-        <ul class="w-full px-6 py-4 flex flex-col bg-white shadow  border-gray-200">
+        <ul class="w-full px-6 py-4 flex flex-col bg-white shadow border-gray-200">
             @isset($post->comments)
                 @foreach($post->comments as $comment)
-                <li class="bg-gray-50 pb-2 mb-2 shadow-lg border rounded w-full" id="{{ 'comment-'.$comment->id }}">
-                    <div class="bg-blue-50 px-2 pt-2 text-xs pb-2 border-b border-gray-500">
-                        <a href="" class="text-green-600 text-sm">{{ $comment->user->name }}</a> -  
-                        <a href="#{{ 'comment-'.$comment->id }}" class="text-blue-500">{{ $comment->created_at->diffForHumans()}}</a> said:
+                <li class="bg-gray-50 pb-2 mb-2 shadow border rounded w-full" id="{{ 'comment-'.$comment->id }}">
+                    <div class="bg-blue-50 px-2 pt-2 text-xs pb-2 border-b border-gray-500 flex justify-between">
+                        <div>
+                            <a href="{{ route('user', ['id'=> $comment->user->id]) }}" class="text-green-600 text-sm">{{ $comment->user->name }}</a> -  
+                            <a href="#{{ 'comment-'.$comment->id }}" class="text-blue-500">{{ $comment->created_at->diffForHumans()}}</a> said:
+                        </div>
+                        <div>
+                            {{ $comment->created_at }}
+                        </div>
                     </div>
                     <div class="px-4 py-3 text-gray-700">
                         {!! nl2br(e($comment->body)) !!}
@@ -68,7 +73,7 @@
                     <div class="text-red-500 mb-2 text-sm">{{ $message }}</div>
                     @enderror
                     <textarea name="body" rows="3" class="resize-none w-full bg-gray-100 shadow p-2 rounded-t" placeholder="Write something..."></textarea>
-                    <button class="p-2 w-full transition-all bg-green-300 hover:bg-green-500 active:bg-green-400 shadow text-white uppercase font-bold rounded-b" type="submit">Add Comment</button>
+                    <button class="p-2 w-full transition-all bg-green-400 hover:bg-green-500 active:bg-green-400 shadow text-white uppercase font-bold rounded-b" type="submit">Add Comment</button>
                 </form>
             </div>
         @endauth

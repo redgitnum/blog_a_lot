@@ -1,4 +1,4 @@
-1. Website Skeleton
+Website Skeleton
     <!-- DONE - Home page with latest posts -->
     <!-- DONE- Center Header with home / categories (will expand downward)/ about?  -->
     <!-- DONE- Right header with login / register / dashboard 'as username?'(if logged)/ logout (if logged) / add post? (if logged) -->
@@ -31,15 +31,15 @@
     <!-- DONE -register page {if guest} -->
     <!-- DONE -logout button {if logged} -->
     -dashboard Skeleton
-        *main page
+    <!-- DONE *main page
             {username}
             {number of posts}   
             {number of votes/likes} {number of posts you liked/voted}
-            {number of comments}  {number of your comments}
-        *navigation/header
+            {number of comments}  {number of your comments} -->
+    <!-- DONE *navigation/header
             +posts
             +comments
-            +likes/votes
+            +likes/votes -->
     <!-- DONE    +add post -->
         *each post/comment to have edit/delete button
         *add/edit post form Skeleton {need post_id when edit}
@@ -55,7 +55,7 @@
         *delete your Account
             +confirmation required
             +delete all data from db {userdata, posts, comments, likes/votes}
-    -post page Skeleton
+    <!-- DONE -post page Skeleton -->
     <!-- DONE *post title - by {Author} posted on {datestamp}
             + in {category/categories <- links to categories} -->
     <!-- DONE *post content (max height?) -->
@@ -69,5 +69,5 @@
             +{total posts}
             +{this post likes?}
             +{this post comment count} -->
-    -{author name} is link to authors user page
-        *list of all posts by that user {view the same as home page or filered/searched results}
+    <!-- DONE -{author name} is link to authors user page
+            *list of all posts by that user {view the same as home page or filered/searched results} -->

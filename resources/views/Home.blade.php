@@ -1,6 +1,9 @@
 @extends('_layouts.app')
 @section('content')
     
+@php
+    // dd($posts)
+@endphp
 <script defer>
     window.onload = function(){
         if(sessionStorage.getItem('scrollPos') && (document.referrer == window.location.href)){

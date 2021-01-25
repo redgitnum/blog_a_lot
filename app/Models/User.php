@@ -14,11 +14,6 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name',
         'username',
@@ -26,11 +21,6 @@ class User extends Authenticatable
         'password',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'remember_token',
@@ -49,6 +39,11 @@ class User extends Authenticatable
     public function votes()
     {
         return $this->hasManyThrough(Vote::class, Post::class);
+    }
+
+    public function hasVotes()
+    {
+        return $this->hasMany(Vote::class);
     }
 
 }

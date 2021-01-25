@@ -42,6 +42,7 @@ Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
 Route::delete('/logout', [LogoutController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/user/{id}', [DashboardController::class, 'user'])->name('user');
 
 Route::get('/posts/create', [CreatePostController::class, 'index'])->name('posts.create');
 Route::post('/posts/create', [CreatePostController::class, 'create']);

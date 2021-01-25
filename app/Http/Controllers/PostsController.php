@@ -55,6 +55,9 @@ class PostsController extends Controller
         }, 'categories', 'user'  => function($q) {
             $q->select('id', 'name')->withCount(['posts', 'comments', 'votes']);
         }])->first();
+        if(!isset($post)){
+            abort(404);
+        }
         return view('postpage', [
             'post' => $post
         ]);
@@ -98,7 +101,6 @@ class PostsController extends Controller
                 $votes->delete();
         }
         
-        // return redirect(url()->previous().'#'.$id);
         return redirect(url()->previous());
     }
 }

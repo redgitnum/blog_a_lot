@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Vote extends Model
 {
@@ -13,5 +15,15 @@ class Vote extends Model
         'post_id',
         'user_id'
     ];
+
+    public function user()
+    {
+        return $this->BelongsTo(User::class);
+    }
+
+    public function post()
+    {
+        return $this->BelongsTo(Post::class);
+    }
 
 }

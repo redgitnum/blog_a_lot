@@ -70,7 +70,7 @@
                             <div class="text-red-500 mb-2 text-sm">{{ $message }}</div>
                         @enderror
                     <textarea class="w-full p-4 text-lg mb-4 rounded-md focus:ring-4 focus:ring-green-300 ring ring-blue-300 shadow" placeholder="Post content" name="body" cols="50" rows="10">{{ old('body') }}</textarea>
-                    <button class="p-4 w-full transition-all bg-green-300 hover:bg-green-500 active:bg-green-400 shadow text-white uppercase font-bold rounded-md" type="submit">Add Post</button>
+                    <button class="p-4 w-full transition-all bg-green-400 hover:bg-green-500 active:bg-green-400 shadow text-white uppercase font-bold rounded-md" type="submit">Add Post</button>
                 </div>
             </form>
         </div>
