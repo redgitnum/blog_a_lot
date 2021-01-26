@@ -49,7 +49,7 @@
                             <div class="text-red-500 mb-2 text-sm">{{ $message }}</div>
                         @enderror
                     <input onkeydown="return event.key != 'Enter';" 
-                    class="w-full focus:ring-4 focus:ring-green-300 ring ring-blue-300 p-4 text-xl rounded-md text-gray-700 shadow" 
+                    class="w-full focus:ring-4 focus:ring-green-300 ring-2 ring-blue-300 p-4 text-xl rounded-md text-gray-700 shadow" 
                     type="text" name="title" value="{{ old('title') }}" placeholder="Post Title">
                         @error('categories')
                             <div class="text-red-500 my-2 text-sm">{{ $message }}</div>
@@ -69,7 +69,7 @@
                         @error('body')
                             <div class="text-red-500 mb-2 text-sm">{{ $message }}</div>
                         @enderror
-                    <textarea class="w-full p-4 text-lg mb-4 rounded-md focus:ring-4 focus:ring-green-300 ring ring-blue-300 shadow" placeholder="Post content" name="body" cols="50" rows="10">{{ old('body') }}</textarea>
+                    <textarea class="w-full p-4 text-lg mb-4 rounded-md focus:ring-4 focus:ring-green-300 ring-2 ring-blue-300 shadow" placeholder="Post content" name="body" cols="50" rows="10">{{ old('body') }}</textarea>
                     <button class="p-4 w-full transition-all bg-green-400 hover:bg-green-500 active:bg-green-400 shadow text-white uppercase font-bold rounded-md" type="submit">Add Post</button>
                 </div>
             </form>

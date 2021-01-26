@@ -1,5 +1,9 @@
 @props(['vote'])
 
+@php
+    // dd($vote)
+@endphp
+
 <ul class="flex items-center justify-between">
     <li class="bg-gray-50 mb-1 shadow border rounded w-full">
         <div class="bg-blue-50 px-2 pt-2 text-xs pb-2  flex justify-between">

@@ -21,7 +21,7 @@ class PostsController extends Controller
         if($sort === null || $sort ==='mostvotes'){
             $posts = Post::withCount(['comments', 'votes'])->orderBy($sort ? 'votes_count' : 'created_at', 'desc')->with(['user' => function($q) {
                 $q->select('id', 'name');
-            }, 'categories'])->paginate(10);
+            }, 'categories', 'votes'])->paginate(10);
             return view('home', [
                 'posts' => $posts,
                 'sort' => $sort               
@@ -35,7 +35,7 @@ class PostsController extends Controller
         if($sort === null || $sort ==='mostvotes'){
             $posts = Post::whereHas('categories', function($query) use ($category) {
                 $query->where('name', '=', $category);
-            })->withCount(['comments', 'votes'])->orderBy($sort ? 'votes_count' : 'created_at', 'desc')->with('user', 'categories')->paginate(10);
+            })->withCount(['comments', 'votes'])->orderBy($sort ? 'votes_count' : 'created_at', 'desc')->with('user', 'categories', 'votes')->paginate(10);
             return view('home', [
                 'posts' => $posts,
                 'category' => $category,

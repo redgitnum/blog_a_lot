@@ -11,9 +11,13 @@
             <p class="bg-white rounded p-2">{{ $user->name }}</p>
         </li>
         <li class="flex items-center pb-2">
+            <div class="text-lg pr-2">Username: </div>
+            <p class="bg-white rounded p-2">{{ $user->username }}</p>
+        </li>
+        <li class="flex items-center pb-2">
             <div class="text-lg pr-2">User since: </div>
             <p class="bg-white rounded p-2">{{ $user->created_at->diffForHumans() }}</p>
-        </li>
+        </li>       
     </ul>
     <ul class="flex flex-col p-4 items-end">
         <li class="flex items-center pb-2">
