@@ -6,15 +6,18 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Vote;
 use App\Models\Comment;
+use App\Rules\PasswordCheck;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Exception;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware(['auth'])->only(['index']);
+        $this->middleware(['auth'])->only(['index', 'passwordUpdate']);
     }
 
     public function index()
@@ -55,5 +58,31 @@ class DashboardController extends Controller
             'comments' => $comments,
             'votes' => $votes,
         ]);
+    }
+
+    public function passwordUpdate(Request $request)
+    {
+       $this->validate($request, [
+           'old_password' => ['required', new PasswordCheck],
+           'new_password' => ['required', 'confirmed']
+       ]);
+
+        try{
+            User::find(auth()->id())->update(['password' => Hash::make($request->new_password)]);
+        } catch(Exception $e){
+            return back()->with('status', 'Password update Failed');
+        }
+
+       return back()->with('status', 'Password updated Successfully!');
+    }
+
+    public function deleteAccount(Request $request)
+    {
+        $this->validate($request, [
+            'delete_confirmation' => ['required','in:delete']
+        ]);
+        
+        User::find(auth()->id())->delete();
+        return redirect()->route('home');
     }
 }

@@ -42,10 +42,14 @@ Route::get('/logout', [LogoutController::class, 'index'])->name('logout');
 Route::delete('/logout', [LogoutController::class, 'logout']);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::post('/dashboard/updatepassword', [DashboardController::class, 'passwordUpdate'])->name('password.update');
 Route::get('/user/{id}', [DashboardController::class, 'user'])->name('user');
+Route::delete('/dashboard/deleteaccount', [DashboardController::class, 'deleteAccount'])->name('user.delete');
+
 
 Route::get('/posts/create', [CreatePostController::class, 'index'])->name('posts.create');
 Route::post('/posts/create', [CreatePostController::class, 'create']);
+
 
 Route::get('/{sort?}', [PostsController::class, 'index'])->name('home');
 Route::get('/category/{category}/{sort?}', [PostsController::class, 'category'])->name('home.category');

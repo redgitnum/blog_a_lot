@@ -30,7 +30,7 @@ class RegisterController extends Controller
             'email' => 'required|email',
             'password' => 'required|confirmed|max:255',
         ]);
-
+        
         try{
             User::create([
                 'name' => $request->name,

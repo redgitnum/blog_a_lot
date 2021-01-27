@@ -52,9 +52,11 @@ Website Skeleton
         *delete post {post_id}
             +confirmation required
             +delete all comments in that post {cascade delete}
-        *delete your Account
+    <!-- DONE *update password
+            +confirmation for new password required -->
+    <!-- DONE *delete your Account
             +confirmation required
-            +delete all data from db {userdata, posts, comments, likes/votes}
+            +delete all data from db {userdata, posts, comments, likes/votes} -->
     <!-- DONE -post page Skeleton -->
     <!-- DONE *post title - by {Author} posted on {datestamp}
             + in {category/categories <- links to categories} -->

@@ -1,6 +1,6 @@
 @extends('_layouts.app')
 @section('content')
-
+    
 
 <script defer>
     let sections = document.getElementsByName('section');
@@ -96,7 +96,38 @@
         </div>
         @if(auth()->id() === $user->id)
             <div class="w-full shadow p-2 hidden" id="settings" name="section">
-                SETTINGS
+                @if(session('status'))
+                    <div class="text-center w-full text-green-600 text-lg"> {{ session('status') }} </div>
+                @endif
+                <form action="{{ route('password.update') }}" method="POST" class="p-4 mr-2  flex flex-col items-center">
+                @csrf
+                <div class="flex flex-col items-center shadow-lg p-4 bg-green-400 rounded">
+                        <h1 class="text-2xl mb-2 tracking-widest text-white">Update Password</h1>
+                        @error('old_password')
+                        <div class="text-red-600 font-bold p-2">{{ $message }}</div>
+                        @enderror
+                        <input class="bg-white p-2 rounded mb-1" type="password" name="old_password" placeholder="Current password">
+                        @error('new_password')
+                        <div class="text-red-600 font-bold p-2">{{ $message }}</div>
+                        @enderror
+                        <input class="bg-white p-2 rounded mb-1" type="password" name="new_password" placeholder="New password">
+                        <input class="bg-white p-2 rounded mb-1" type="password" name="new_password_confirmation" placeholder="Confirm new password">
+                        <button class="bg-yellow-500 transition hover:bg-yellow-400 active:bg-yellow-500 text-white p-2 rounded mt-2" type="submit">Update password</button>
+                    </div>
+                </form>
+                <form action="{{ route('user.delete') }}" method="POST" class="p-4 flex flex-col items-center justify-center">
+                    @csrf
+                    @method('DELETE')
+                    <div class="flex flex-col items-center shadow-lg p-4 border-2 border-red-500 rounded">
+                        <h1 class="text-2xl tracking-widest">Delete Account</h1>
+                        <label for="delete_confirmation" class="text-xs mb-1">Write <p class="inline text-red-600 font-bold">delete</p> below if you are sure to delete your account</label>
+                        <input class="bg-white p-2 rounded mb-1" type="text" placeholder="delete" name="delete_confirmation">
+                        @error('delete_confirmation')
+                            <div class="text-red-600 font-bold p-2">{{ $message }}</div>
+                        @enderror
+                        <button class="bg-red-500 transition hover:bg-red-400 active:bg-red-500 text-white p-2 rounded mt-2" type="submit">Delete account</button>
+                    </div>
+                </form>
             </div>
         @endif
     </div>
