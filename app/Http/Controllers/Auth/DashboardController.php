@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Exception;
 use App\Models\Post;
 use App\Models\User;
 use App\Models\Vote;
 use App\Models\Comment;
+use App\Models\Category;
 use App\Rules\PasswordCheck;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Exception;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\QueryException;
 
 class DashboardController extends Controller
 {
@@ -84,5 +86,88 @@ class DashboardController extends Controller
         
         User::find(auth()->id())->delete();
         return redirect()->route('home');
+    }
+
+    public function deletePost($id)
+    {
+        if(Post::find($id)->user_id === auth()->id()){
+            Post::find($id)->delete();
+            return back();
+        } else {
+            abort(403);
+        }
+    }
+
+    public function editPost($id)
+    {
+        if(Post::find($id)->user_id === auth()->id()){
+            return view('CreatePost', [
+                'categories' => Category::get(),
+                'post' => Post::with(['categories'])->find($id)
+            ]);
+        } else {
+            abort(403);
+        }
+    }
+
+    public function updatePost(Request $request, $id)
+    {
+        if(Post::find($id)->user_id === auth()->id()){
+
+            $this->validate($request, [
+                'title' => 'required|max:255',
+                'categories' => 'required|array|min:1|max:5',
+                'body' => 'required'
+            ]);
+            try{
+                Post::find($id)->update([
+                    'title' => $request->title,
+                    'user_id' => auth()->id(),
+                    'body' => $request->body,
+                ]);
+                $cats = [];
+                foreach ($request->categories as $cat) {
+                    $cats[] = Category::select('id')->where('name', $cat)->value('id');
+                }
+                Post::find($id)->categories()->detach();
+                Post::find($id)->categories()->attach($cats);
+    
+    
+            } catch(QueryException $exception){
+                return back()->with('status', $exception->getMessage());
+            }
+            return redirect()->route('dashboard');
+        } else {
+            abort(403);
+        }
+    }
+
+    public function editComment(Request $request,  $id)
+    {
+        $this->authorize('update', Comment::find($id));
+
+        $this->validate($request, [
+            'body' => 'required'
+        ]);
+
+        try{
+            Comment::find($id)->update([
+                'body' => $request->body,
+            ]);
+        } catch(QueryException $exception){
+            if($exception->getCode() === '23000'){
+                return back()->with('status', 'Invalid input');
+            }
+        }
+
+        return back();
+    }
+
+    public function deleteComment($id)
+    {
+        $this->authorize('update', Comment::find($id));
+        Comment::find($id)->delete();
+
+        return back();
     }
 }

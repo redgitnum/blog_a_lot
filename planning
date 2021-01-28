@@ -30,7 +30,7 @@ Website Skeleton
     <!-- DONE -login page {if guest} -->
     <!-- DONE -register page {if guest} -->
     <!-- DONE -logout button {if logged} -->
-    -dashboard Skeleton
+    <!-- -dashboard Skeleton -->
     <!-- DONE *main page
             {username}
             {number of posts}   
@@ -41,17 +41,17 @@ Website Skeleton
             +comments
             +likes/votes -->
     <!-- DONE    +add post -->
-        *each post/comment to have edit/delete button
-        *add/edit post form Skeleton {need post_id when edit}
+        <!-- DONE *each post/comment to have edit/delete button -->
+    <!-- DONE *add/edit post form Skeleton {need post_id when edit}
             +title
             +categories
-            +post body
-        *edit/delete comments
+            +post body -->
+    <!-- DONE *edit/delete comments
             +comment_id needed
-            +comment body
-        *delete post {post_id}
+            +comment body -->
+    <!-- DONE *delete post {post_id}
             +confirmation required
-            +delete all comments in that post {cascade delete}
+            +delete all comments in that post {cascade delete} -->
     <!-- DONE *update password
             +confirmation for new password required -->
     <!-- DONE *delete your Account

@@ -45,6 +45,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::post('/dashboard/updatepassword', [DashboardController::class, 'passwordUpdate'])->name('password.update');
 Route::get('/user/{id}', [DashboardController::class, 'user'])->name('user');
 Route::delete('/dashboard/deleteaccount', [DashboardController::class, 'deleteAccount'])->name('user.delete');
+Route::delete('/dashboard/post/delete/{id}', [DashboardController::class, 'deletePost'])->name('post.delete');
+Route::get('/dashboard/post/update/{id}', [DashboardController::class, 'editPost'])->name('post.edit');
+Route::put('/dashboard/post/update/{id}', [DashboardController::class, 'updatePost'])->name('post.update');
+Route::post('/dashboard/comment/{id}', [DashboardController::class, 'editComment'])->name('comment.edit');
+Route::delete('/dashboard/comment/{id}', [DashboardController::class, 'deleteComment'])->name('comment.delete');
 
 
 Route::get('/posts/create', [CreatePostController::class, 'index'])->name('posts.create');

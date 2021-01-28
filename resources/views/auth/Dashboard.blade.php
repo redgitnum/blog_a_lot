@@ -8,8 +8,6 @@
 
      window.onload = function(){
         if(!document.referrer.includes('dashboard') && !document.referrer.includes('user')){
-         console.log(document.referrer)
-
             sessionStorage.clear();
         }
         if(sessionStorage.getItem('currentView') !== null){

@@ -4,8 +4,21 @@
     // dd(empty($post->votes->where('post_id', 76)->all()));
 @endphp
 
-<div class="w-full bg-white shadow rounded-md rounded-b-none border-gray-400">
-    <div class="text-lg text-gray-500 flex items-center justify-between">
+<script defer>
+    function toggleConfirm(e, parent){
+        parent.innerText = parent.innerText === 'Delete' ? 'Cancel?' : 'Delete';
+        parent.classList.toggle('bg-red-500');
+        parent.classList.toggle('hover:bg-red-600');
+        parent.classList.toggle('active:bg-red-500');
+        parent.classList.toggle('bg-blue-500');
+        parent.classList.toggle('hover:bg-blue-600');
+        parent.classList.toggle('active:bg-blue-500');
+        e.classList.toggle('invisible');
+    }
+</script>
+
+<div class="w-full bg-white shadow rounded-md rounded-b-none border-gray-400 overflow-hidden">
+    <div class="text-lg text-gray-500 flex items-center justify-between @can('update', $post) bg-green-100 @endcan">
         <div class="border-r px-2 my-2 text-sm text-center text-gray-600">
             <form action="{{ route('post.vote', ['id' => $post->id]) }}" method="POST" id="{{ $post->id }}">
                 @csrf
@@ -45,6 +58,28 @@
                 @endif
             </div>
         </div>
+        @can('update', $post)            
+            <form action="{{ route('post.edit', ['id' => $post->id]) }}" class="flex my-1 items-center mr-1">
+                @csrf
+                <button type="submit"
+                class="bg-green-500 hover:bg-green-600 active:bg-green-500 rounded p-2 mr-1 text-white">
+                Edit
+            </button>
+            </form>
+            <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="POST" class="flex my-1 items-center mr-1">
+                @csrf
+                @method('DELETE')
+                <button type="button" onclick="toggleConfirm({{ 'post'.$post->id }}, this)" 
+                    class="bg-red-500 hover:bg-red-600 active:bg-red-500 rounded p-2 mr-1 text-white">
+                    Delete
+                </button>
+                <button id="{{ 'post'.$post->id }}" type="submit" 
+                    class="invisible p-2 bg-red-200 hover:bg-red-700 hover:text-white active:bg-red-500 rounded" 
+                    title="confirm">
+                    &#10003;
+                </button>
+            </form>
+        @endcan
         <div class="w-24 px-2 my-2 uppercase text-gray-700 border-l text-center text-xs">{{ $post->created_at->diffForHumans() }}</div>
     </div>
     <div class="py-4 mx-6 @if(isset($post->comments_count)) max-h-60 @endif overflow-hidden border-t">
