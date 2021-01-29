@@ -23,7 +23,7 @@
     <header class="flex flex-col items-center">
         <div class="flex justify-between items-center w-full py-4">
             <div class="sm:w-4/12"></div>
-            <h1 class="sm:text-center w-8/12 text-3xl sm:text-5xl pl-6 sm:pl-0 text-gray-600 font-mono tracking-wide">
+            <h1 class="sm:text-center w-8/12 text-3xl sm:text-5xl pl-16 sm:pl-6 sm:pl-0 text-gray-600 font-mono tracking-wide">
                 Blog-a-lot
             </h1>
             @guest 

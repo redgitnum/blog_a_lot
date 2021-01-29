@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/post/{id}', [PostsController::class, 'post'])->name('post');
+Route::get('/search', [PostsController::class, 'search'])->name('post.search');
 Route::post('/post/{id}', [PostsController::class, 'comment'])->name('post.comment');
 Route::post('/vote/{id}', [PostsController::class, 'vote'])->name('post.vote');
 

@@ -50,7 +50,7 @@ class DashboardController extends Controller
         $posts = Post::latest()->where('user_id', $id)->with(['categories', 'votes'])->withCount(['votes'])->paginate(10, ['*'], 'posts');
         $comments = Comment::latest()->where('user_id', $id)->with(['post' => function($q) {
             $q->select('id', 'title');
-        }])->paginate(3, ['*'], 'comments');
+        }])->paginate(10, ['*'], 'comments');
         $votes = Vote::latest()->where('user_id', $id)->with(['post' => function($q) {
             $q->select('id', 'title');
         }])->paginate(10, ['*'], 'votes');

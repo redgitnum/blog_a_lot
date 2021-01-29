@@ -46,6 +46,20 @@ class PostsController extends Controller
 
     }
 
+    public function search(Request $request)
+    {
+        $this->validate($request, [
+            'query' => 'required|min:3'
+        ]);
+        $posts = Post::latest()->where('title', 'LIKE', '%'.$request->query('query').'%')->withCount(['comments', 'votes'])->with(['user' => function($q) {
+            $q->select('id', 'name');
+        }, 'categories', 'votes'])->paginate(10)->withQueryString();
+        return view('home', [
+            'posts' => $posts,
+            'query' => $request->query('query')
+            ]);
+    }
+
     public function post($id)
     {
         $post = Post::where('id', $id)->withCount('votes')->with(['comments' => function($q) {
