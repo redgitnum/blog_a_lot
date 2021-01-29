@@ -33,7 +33,7 @@ class DashboardController extends Controller
         $votes = Vote::latest()->where('user_id', auth()->id())->with(['post' => function($q) {
             $q->select('id', 'title');
         }])->paginate(10, ['*'], 'votes');
-        return view('auth.dashboard', [
+        return view('auth.Dashboard', [
             'user' => $user,
             'posts' => $posts,
             'comments' => $comments,
@@ -54,7 +54,7 @@ class DashboardController extends Controller
         $votes = Vote::latest()->where('user_id', $id)->with(['post' => function($q) {
             $q->select('id', 'title');
         }])->paginate(10, ['*'], 'votes');
-        return view('auth.dashboard', [
+        return view('auth.Dashboard', [
             'user' => $user,
             'posts' => $posts,
             'comments' => $comments,

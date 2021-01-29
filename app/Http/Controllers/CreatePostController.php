@@ -18,7 +18,7 @@ class CreatePostController extends Controller
 
     public function index()
     {
-        return view('createpost', [
+        return view('CreatePost', [
             'categories' => Category::get()
         ]);
     }

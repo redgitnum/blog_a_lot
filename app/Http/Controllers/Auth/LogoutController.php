@@ -16,7 +16,7 @@ class LogoutController extends Controller
 
     public function index()
     {
-        return view('home');
+        return view('Home');
     }
 
     public function logout(Request $request)

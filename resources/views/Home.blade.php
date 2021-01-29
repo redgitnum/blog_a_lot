@@ -38,7 +38,7 @@
         @if(isset($query))
         <div class="items-baseline w-11/12 sm:w-10/12 lg:w-8/12 xl:w-7/12 px-4 mt-2">
             <div class="text-xl border-b text-blue-500">
-                {{ $posts->count() }} Search results for: {{ $query }}
+                {{ $posts->total() }} Search results for: {{ $query }}
             </div>
             <div class="text-xs uppercase text-gray-500">posts</div>
         </div>

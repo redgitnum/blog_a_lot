@@ -22,7 +22,7 @@ class PostsController extends Controller
             $posts = Post::withCount(['comments', 'votes'])->orderBy($sort ? 'votes_count' : 'created_at', 'desc')->with(['user' => function($q) {
                 $q->select('id', 'name');
             }, 'categories', 'votes'])->paginate(10);
-            return view('home', [
+            return view('Home', [
                 'posts' => $posts,
                 'sort' => $sort               
                 ]);
@@ -36,7 +36,7 @@ class PostsController extends Controller
             $posts = Post::whereHas('categories', function($query) use ($category) {
                 $query->where('name', '=', $category);
             })->withCount(['comments', 'votes'])->orderBy($sort ? 'votes_count' : 'created_at', 'desc')->with('user', 'categories', 'votes')->paginate(10);
-            return view('home', [
+            return view('Home', [
                 'posts' => $posts,
                 'category' => $category,
                 'sort' => $sort
@@ -54,7 +54,7 @@ class PostsController extends Controller
         $posts = Post::latest()->where('title', 'LIKE', '%'.$request->query('query').'%')->withCount(['comments', 'votes'])->with(['user' => function($q) {
             $q->select('id', 'name');
         }, 'categories', 'votes'])->paginate(10)->withQueryString();
-        return view('home', [
+        return view('Home', [
             'posts' => $posts,
             'query' => $request->query('query')
             ]);
@@ -72,7 +72,7 @@ class PostsController extends Controller
         if(!isset($post)){
             abort(404);
         }
-        return view('postpage', [
+        return view('PostPage', [
             'post' => $post
         ]);
     }
