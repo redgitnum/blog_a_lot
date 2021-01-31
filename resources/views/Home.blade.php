@@ -73,7 +73,7 @@
             @if(!$posts->count())
             <div class="w-full bg-white shadow rounded-md rounded-b-none border-gray-400">
                 <div class="text-lg text-gray-500 flex items-center justify-between p-4">
-                    No posts with that category :(
+                    No posts @if(isset($query)) found  @else with that category @endif :(
                 </div>
             </div>
             @endif

@@ -8,7 +8,7 @@
                 <div class="text-xl font-bold mb-2 text-indigo-400">Blog</div>
                 <ul>
                     <li class="border-l border-white border-opacity-50 pl-1 pb-2 text-sm">
-                        <a href="/">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="border-l border-white border-opacity-50 pl-1 pb-2 text-sm">
                         <a href="{{ route('categories') }}">Categories</a>

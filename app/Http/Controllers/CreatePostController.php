@@ -27,9 +27,9 @@ class CreatePostController extends Controller
     {
         
         $this->validate($request, [
-            'title' => 'required|max:255',
+            'title' => 'required|max:255|min:10',
             'categories' => 'required|array|min:1|max:5',
-            'body' => 'required'
+            'body' => 'required|min:500'
         ]);
         try{
             $post = new Post([
