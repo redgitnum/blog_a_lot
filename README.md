@@ -1,6 +1,6 @@
 
 # Blog-a-lot
-
+demo -> [blog-a-lot](http://gbcode.pl/blog-a-lot/)
 ### About
 - App created to mimic some functionality of medium.com
 - Project build entirely in Laravel(PHP)
